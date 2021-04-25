@@ -1,0 +1,24 @@
+1. Trazer todos os registros de CIDADE e CLIENTE (2 QUERY)
+R:SELECT * FROM cidades
+  SELECT * FROM clientes
+
+2. Trazer apenas o primeiro registro de CIDADE e CLIENTE
+R: 
+
+3. Todos os CLIENTES que comecem com a letra A
+R: SELECT * FROM clientes WHERE nome LIKE 'A%'
+
+4. Todos os CLIENTES que terminem com SILVA
+R: SELECT * FROM clientes WHERE nome LIKE '%SILVA'
+
+5. Qual o maior salário do CLIENTE
+R: SELECT Max(salario) FROM clientes
+
+6. A média de salário agrupado por SEXO
+R: SELECT ROUND(AVG(SALARIO),2) as Media_Salarial FROM clientes GROUP BY sexo
+
+7. O maior salário agrupado pela CIDADE
+R:
+
+8. Trazer todos os CLIENTES exibindo seus dados e de sua CIDADE
+R: SELECT * FROM clientes as C JOIN cidades as CITY ON C.cidade_id = CITY.id

@@ -9,8 +9,8 @@ export default function Header() {
 
   return (
     <Container>
-      <Logo to="/">ProvaCarlos</Logo>
       <Content>
+        <Logo to="/">ProvaCarlos</Logo>
         <MenuNav>
           <NavItem active={location.pathname === '/clients'}>
             <Link to="/clients">

@@ -5,9 +5,10 @@ import { FaEdit, FaTrash } from 'react-icons/fa';
 
 import api from '../../services/api';
 
-import { Container, TableCitys } from './styles';
+import { Container, TableCitys, NoItems } from './styles';
 import Modal from '../Modal';
 import { useToast } from '../../hooks/toast';
+import LoadingContainer from '../LoadingContainer';
 
 export default function ListCitys({ valueCity }) {
   const { addToast } = useToast();
@@ -16,6 +17,7 @@ export default function ListCitys({ valueCity }) {
   const [filterCitys, setFilterCitys] = useState([]);
   const [isActiveModal, setIsActiveModal] = useState(false);
   const [itemID, setItemID] = useState('');
+  const [loading, setLoading] = useState(true);
 
   const loadCitys = useCallback(async () => {
     const response = await api.get('/cidades');
@@ -28,7 +30,10 @@ export default function ListCitys({ valueCity }) {
   }, []);
 
   useEffect(() => {
-    loadCitys();
+    setTimeout(() => {
+      loadCitys();
+      setLoading(false);
+    }, 3000);
   }, [loadCitys]);
 
   const searchCity = useCallback(() => {
@@ -77,50 +82,56 @@ export default function ListCitys({ valueCity }) {
 
   return (
     <>
-      <Container>
-        {filterCitys.length > 0 ? (
-          <TableCitys>
-            <thead>
-              <tr>
-                <th>Nome</th>
-                <th>UF</th>
-                <th>Editar</th>
-                <th>Excluir</th>
-              </tr>
-            </thead>
-            <tbody>
-              {filterCitys.map((city) => (
-                <tr key={city.id}>
-                  <td>{city.nome}</td>
-                  <td>{city.uf}</td>
-                  <td>
-                    <Link
-                      to={{
-                        pathname: '/city/edit',
-                        city,
-                      }}
-                    >
-                      Editar
-                      <FaEdit />
-                    </Link>
-                  </td>
-                  <td>
-                    <button
-                      type="button"
-                      onClick={() => handleOpenModal(city.id)}
-                    >
-                      Excluir
-                      <FaTrash />
-                    </button>
-                  </td>
+      {loading ? (
+        <LoadingContainer loading={loading} />
+      ) : (
+        <Container>
+          {filterCitys.length > 0 ? (
+            <TableCitys>
+              <thead>
+                <tr>
+                  <th>Nome</th>
+                  <th>UF</th>
+                  <th>Editar</th>
+                  <th>Excluir</th>
                 </tr>
-              ))}
-            </tbody>
-          </TableCitys>
-        ) : (
-          <span>Não possui nenhum registro</span>
-        )}
-      </Container>
+              </thead>
+              <tbody>
+                {filterCitys.map((city) => (
+                  <tr key={city.id}>
+                    <td>{city.nome}</td>
+                    <td>{city.uf}</td>
+                    <td>
+                      <Link
+                        to={{
+                          pathname: '/city/edit',
+                          city,
+                        }}
+                      >
+                        Editar
+                        <FaEdit />
+                      </Link>
+                    </td>
+                    <td>
+                      <button
+                        type="button"
+                        onClick={() => handleOpenModal(city.id)}
+                      >
+                        Excluir
+                        <FaTrash />
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </TableCitys>
+          ) : (
+            <NoItems>
+              <span>Não possui nenhum registro !!</span>
+            </NoItems>
+          )}
+        </Container>
+      )}
       <Modal
         itemID={itemID}
         handleDelete={handleDelete}

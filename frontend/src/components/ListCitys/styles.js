@@ -8,3 +8,14 @@ export const Container = styled.div`
 `;
 
 export const TableCitys = styled.table``;
+
+export const NoItems = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+
+  > span {
+    font-size: 20px;
+  }
+`;

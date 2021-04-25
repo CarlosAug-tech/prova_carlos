@@ -28,7 +28,7 @@ export default function Modal({
 
 Modal.propTypes = {
   isActiveModal: PropTypes.bool,
-  itemID: PropTypes.string,
+  itemID: PropTypes.number,
   handleDelete: PropTypes.func,
   setIsActiveModal: PropTypes.func,
 };

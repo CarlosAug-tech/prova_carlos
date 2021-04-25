@@ -22,6 +22,7 @@ export const Content = styled.div`
     width: 100%;
     margin-bottom: 20px;
     text-align: center;
+    font-size: 20px;
   }
 `;
 

@@ -43,14 +43,14 @@ export const InputElement = styled.input`
   &:focus ~ label,
   &:not(:placeholder-shown) ~ label {
     top: 5px;
-    left: 5px;
+    left: 10px;
     font-size: 10px;
-    color: #ffd6ba;
+    color: #89b0ae;
   }
 
   &:focus ~ svg,
   &:not(:placeholder-shown) ~ svg {
-    color: #ffd6ba;
+    color: #89b0ae;
   }
 `;
 

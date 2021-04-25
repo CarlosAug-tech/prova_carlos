@@ -3,11 +3,7 @@ import styled, { css } from 'styled-components';
 
 export const Container = styled.header`
   z-index: 1;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
   width: 100%;
-  height: 100px;
   padding: 0 20px;
   position: fixed;
   background: #89b0ae;
@@ -55,7 +51,15 @@ export const Logo = styled(Link)`
   }
 `;
 
-export const Content = styled.nav``;
+export const Content = styled.nav`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  width: 100%;
+  height: 100px;
+  margin: 0 auto;
+`;
 
 export const MenuNav = styled.ul`
   display: flex;

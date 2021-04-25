@@ -18,10 +18,11 @@ export const Content = styled.div`
     0 1px 5px 0 rgb(0 0 0 / 20%);
   background: #fff;
 
-  h2 {
+  > h2 {
     width: 100%;
     margin-bottom: 20px;
     text-align: center;
+    font-size: 20px;
   }
 `;
 

@@ -101,7 +101,7 @@ export default function RegisterClient() {
         });
       }
     },
-    [cityID],
+    [cityID, sexo],
   );
 
   return (
