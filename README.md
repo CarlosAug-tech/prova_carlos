@@ -7,7 +7,7 @@
 ```bash
 
   # Clonar o repositório
-  $ git clone https://github.com/CarlosAug-tech/prova.git
+  $ git clone https://github.com/CarlosAug-tech/prova_carlos.git
 
   # --- Backend ---
 
